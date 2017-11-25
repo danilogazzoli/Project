@@ -8,8 +8,12 @@ type
   EExercicio2Exception = class(Exception);
 
   TConversao = class
+  private
+    FQuantidadeLetras: integer;
+    procedure SetQuantidadeLetras(const Value: integer);
   public
     function Converter(const aTexto: string): string; virtual; abstract;
+    property QuantidadeLetras: integer read FQuantidadeLetras write SetQuantidadeLetras;
   end;
 
   TConversaoTexto = class(TConversao)
@@ -91,6 +95,13 @@ end;
 function TConverteOrdenado.Converter(const aTexto: string): string;
 begin
 
+end;
+
+{ TConversao }
+
+procedure TConversao.SetQuantidadeLetras(const Value: integer);
+begin
+  FQuantidadeLetras := Value;
 end;
 
 end.
