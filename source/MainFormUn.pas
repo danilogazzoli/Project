@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
 
 type
-  TForm1 = class(TForm)
+  TMainForm = class(TForm)
     mnuPrincipal: TMainMenu;
     Exerccios1: TMenuItem;
     Exerccio11: TMenuItem;
@@ -17,6 +17,7 @@ type
     Exercio51: TMenuItem;
     Exerccio61: TMenuItem;
     Exerccio71: TMenuItem;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,10 +25,15 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MainForm: TMainForm;
 
 implementation
 
 {$R *.dfm}
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  self.WindowState := wsMaximized;
+end;
 
 end.

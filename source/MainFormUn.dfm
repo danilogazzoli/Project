@@ -1,4 +1,4 @@
-object Form1: TForm1
+object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Avalia'#231#227'o t'#233'cnica DB1- Danilo Gazzoli Resende'
@@ -12,6 +12,8 @@ object Form1: TForm1
   Font.Style = []
   Menu = mnuPrincipal
   OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object mnuPrincipal: TMainMenu
