@@ -2,6 +2,7 @@ inherited Exercicio2Form: TExercicio2Form
   Caption = 'Exerc'#237'cio 2 - Classes de convers'#227'o de texto'
   ClientHeight = 238
   ClientWidth = 679
+  OnCreate = FormCreate
   ExplicitWidth = 695
   ExplicitHeight = 277
   PixelsPerInch = 96

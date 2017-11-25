@@ -18,8 +18,9 @@ type
     Label2: TLabel;
     ConverterButton: TButton;
     procedure ConverterButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-    function getConversor(const aIndex: integer): TConversao;
+    function getConversor(const aIndex: integer): TConversaoTexto;
     { Private declarations }
   public
     { Public declarations }
@@ -34,7 +35,7 @@ implementation
 
 procedure TExercicio2Form.ConverterButtonClick(Sender: TObject);
 var
-  _Conversor: TConversao;
+  _Conversor: TConversaoTexto;
 begin
   inherited;
   _Conversor := Self.getConversor(OpcoesRadioGroup.ItemIndex);
@@ -46,7 +47,13 @@ begin
   end;
 end;
 
-function TExercicio2Form.getConversor(const aIndex: integer): TConversao;
+procedure TExercicio2Form.FormCreate(Sender: TObject);
+begin
+  inherited;
+  OpcoesRadioGroup.ItemIndex := 0;
+end;
+
+function TExercicio2Form.getConversor(const aIndex: integer): TConversaoTexto;
 begin
 
   case aIndex of

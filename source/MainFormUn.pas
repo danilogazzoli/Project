@@ -19,6 +19,7 @@ type
     Exerccio71: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure Exerccio11Click(Sender: TObject);
+    procedure Exerccio21Click(Sender: TObject);
   private
     procedure HandleApplicationExceptions(Sender: TObject; E: Exception);
     { Private declarations }
@@ -33,7 +34,7 @@ implementation
 
 {$R *.dfm}
 
-uses Exercicio1FormUn;
+uses Exercicio1FormUn, Exercicio2FormUn;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
@@ -59,6 +60,16 @@ begin
    end;
 end;
 
-
+procedure TMainForm.Exerccio21Click(Sender: TObject);
+var
+  Ex2Form: TExercicio2Form;
+begin
+   Ex2Form := TExercicio2Form.Create(Self);
+   try
+     Ex2Form.ShowModal;
+   finally
+     Ex2Form.Free;
+   end;
+end;
 
 end.
