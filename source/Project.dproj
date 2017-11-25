@@ -116,6 +116,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Exercicio1Un.pas"/>
+        <DCCReference Include="Exercicio2Un.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
