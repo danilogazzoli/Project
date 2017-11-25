@@ -4,9 +4,22 @@
     <Transaction>2017/08/10 20:39:47.000.097,=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2017/08/23 21:35:31.000.417,=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2017/11/24 21:27:33.184,=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2017/11/25 06:41:55.753,E:\Project\source\MainFormUn.dfm=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2017/11/25 06:41:55.753,E:\Project\source\MainFormUn.pas=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 06:41:55.753,E:\Project\source\MainFormUn.dfm=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2017/11/25 06:42:16.142,E:\Project\source\Project.dproj=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/11/25 08:01:59.690,=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:02:19.311,E:\Project\source\Exercicio1FormUn.dfm=E:\Project\source\Unit1.dfm</Transaction>
+    <Transaction>2017/11/25 08:02:19.311,E:\Project\source\Exercicio1FormUn.pas=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:05:13.858,=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:14:19.225,=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:15:09.733,E:\Project\source\TemplateFormUn.pas=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:15:09.733,E:\Project\source\TemplateFormUn.dfm=E:\Project\source\Unit1.dfm</Transaction>
+    <Transaction>2017/11/25 08:15:32.640,E:\Project\source\Exercicio1FormUn.pas=</Transaction>
+    <Transaction>2017/11/25 08:15:42.956,=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:15:52.949,E:\Project\source\Exercicio1FormUn.pas=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:15:52.949,E:\Project\source\Exercicio1FormUn.dfm=E:\Project\source\Unit1.dfm</Transaction>
+    <Transaction>2017/11/25 08:25:28.459,=E:\Project\source\Unit1.pas</Transaction>
+    <Transaction>2017/11/25 08:25:54.157,E:\Project\source\Exercicio1Un.pas=E:\Project\source\Unit1.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile iOSSimulator="iPhone5"/>

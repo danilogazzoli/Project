@@ -107,6 +107,15 @@
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="TemplateFormUn.pas">
+            <Form>TemplateForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Exercicio1FormUn.pas">
+            <Form>Exercicio1Form</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Exercicio1Un.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -133,7 +142,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\Project.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\bin\Project.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Project.exe</RemoteName>
                         <Overwrite>true</Overwrite>
