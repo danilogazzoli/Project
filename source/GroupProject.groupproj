@@ -9,6 +9,9 @@
         <Projects Include="Exercicio6DLL.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="DB1Data.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Exercicio6DLL:Make">
         <MSBuild Projects="Exercicio6DLL.dproj" Targets="Make"/>
     </Target>
+    <Target Name="DB1Data">
+        <MSBuild Projects="DB1Data.dproj"/>
+    </Target>
+    <Target Name="DB1Data:Clean">
+        <MSBuild Projects="DB1Data.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DB1Data:Make">
+        <MSBuild Projects="DB1Data.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Project;Exercicio6DLL"/>
+        <CallTarget Targets="Project;Exercicio6DLL;DB1Data"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Project:Clean;Exercicio6DLL:Clean"/>
+        <CallTarget Targets="Project:Clean;Exercicio6DLL:Clean;DB1Data:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Project:Make;Exercicio6DLL:Make"/>
+        <CallTarget Targets="Project:Make;Exercicio6DLL:Make;DB1Data:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
