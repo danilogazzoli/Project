@@ -2,6 +2,9 @@ inherited Exercicio7Form: TExercicio7Form
   Caption = 'Exerc'#237'cio 7 - Processos concorrentes'
   ClientHeight = 170
   ClientWidth = 672
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   ExplicitWidth = 688
   ExplicitHeight = 209
   PixelsPerInch = 96
@@ -71,7 +74,7 @@ inherited Exercicio7Form: TExercicio7Form
     OnClick = ExecutarButtonClick
   end
   object SairButton: TButton
-    Left = 400
+    Left = 408
     Top = 137
     Width = 75
     Height = 25
