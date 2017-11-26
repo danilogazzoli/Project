@@ -41,7 +41,11 @@ inherited Exercicio4Form: TExercicio4Form
       Width = 156
       Height = 89
       Lines.Strings = (
-        '')
+        ' cdpessoa,'
+        ' nmpessoa,'
+        ' delogradouro,'
+        ' debairro,'
+        ' cdCidade')
       TabOrder = 0
     end
     object TabelaMemo: TMemo
@@ -50,7 +54,7 @@ inherited Exercicio4Form: TExercicio4Form
       Width = 156
       Height = 89
       Lines.Strings = (
-        '')
+        'pessoa')
       TabOrder = 1
     end
     object CondicaoMemo: TMemo
@@ -59,7 +63,8 @@ inherited Exercicio4Form: TExercicio4Form
       Width = 156
       Height = 89
       Lines.Strings = (
-        '')
+        ''
+        'cdCidade  > 0')
       TabOrder = 2
     end
     object ConsultarButton: TButton
@@ -69,6 +74,7 @@ inherited Exercicio4Form: TExercicio4Form
       Height = 25
       Caption = 'Consultar'
       TabOrder = 3
+      OnClick = ConsultarButtonClick
     end
   end
   object GroupBox2: TGroupBox
@@ -83,6 +89,7 @@ inherited Exercicio4Form: TExercicio4Form
       Top = 21
       Width = 369
       Height = 366
+      DataSource = ResultadoDataSource
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -90,5 +97,28 @@ inherited Exercicio4Form: TExercicio4Form
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
     end
+  end
+  object ResultadoDataSource: TDataSource
+    DataSet = ResultadoClientDataSet
+    Left = 432
+    Top = 136
+  end
+  object DB1Data: TDB1Data
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = Exercicio3DM.DBSQLConnection
+    Left = 264
+    Top = 136
+  end
+  object ResultadoProvider: TDataSetProvider
+    DataSet = DB1Data
+    Left = 312
+    Top = 136
+  end
+  object ResultadoClientDataSet: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 368
+    Top = 136
   end
 end

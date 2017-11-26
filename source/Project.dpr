@@ -25,5 +25,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TExercicio3DM, Exercicio3DM);
   Application.Run;
 end.

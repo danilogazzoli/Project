@@ -54,10 +54,13 @@ end;
 
 procedure TDB1Data.DoBeforeOpen;
 begin
-  Self.CommandText := Format('SELECT %s FROM %s WHERE %s',
+  Self.CommandText := Format('SELECT %s FROM %s ',
     [Self.FListaCampos.Text,
-     Self.FListaTabelas.Text,
-     Self.FListaCondicoes.Text]);
+     Self.FListaTabelas.Text]);
+
+  if Trim(Self.FListaCondicoes.Text) <> EmptyStr then
+    Self.CommandText := Self.CommandText +
+      Format(' WHERE %s ', [Self.FListaCondicoes.Text]);
   inherited;
 end;
 

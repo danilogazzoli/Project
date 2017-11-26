@@ -14,7 +14,6 @@ inherited Exercicio6Form: TExercicio6Form
     Height = 112
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = -16
     ExplicitWidth = 626
     inherited TipoGroupBox: TGroupBox
       Left = 10
@@ -25,11 +24,6 @@ inherited Exercicio6Form: TExercicio6Form
         EditLabel.Caption = 'Lado'
         EditLabel.ExplicitWidth = 23
       end
-      inherited ResultadoEdit: TLabeledEdit
-        EditLabel.ExplicitLeft = 0
-        EditLabel.ExplicitTop = -16
-        EditLabel.ExplicitWidth = 66
-      end
     end
   end
   inline CirculoFrame: TExercicio6Frame
@@ -39,8 +33,8 @@ inherited Exercicio6Form: TExercicio6Form
     Height = 112
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 12
-    ExplicitTop = 126
+    ExplicitTop = 112
+    ExplicitWidth = 626
     inherited TipoGroupBox: TGroupBox
       Left = 8
       Top = 0
@@ -51,11 +45,6 @@ inherited Exercicio6Form: TExercicio6Form
         EditLabel.Width = 21
         EditLabel.Caption = 'Raio'
         EditLabel.ExplicitWidth = 21
-      end
-      inherited ResultadoEdit: TLabeledEdit
-        EditLabel.ExplicitLeft = 0
-        EditLabel.ExplicitTop = -16
-        EditLabel.ExplicitWidth = 66
       end
     end
   end

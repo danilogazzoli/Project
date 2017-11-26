@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, TemplateFormUn, Vcl.StdCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider,
+  Data.SqlExpr, DB1DataUn;
 
 type
   TExercicio4Form = class(TTemplateForm)
@@ -19,17 +20,33 @@ type
     ConsultarButton: TButton;
     GroupBox2: TGroupBox;
     ResultadoDBGrid: TDBGrid;
+    ResultadoDataSource: TDataSource;
+    DB1Data: TDB1Data;
+    ResultadoProvider: TDataSetProvider;
+    ResultadoClientDataSet: TClientDataSet;
+    procedure ConsultarButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
-var
-  Exercicio4Form: TExercicio4Form;
-
 implementation
 
 {$R *.dfm}
+
+uses Exercicio3DMUn;
+
+procedure TExercicio4Form.ConsultarButtonClick(Sender: TObject);
+begin
+  inherited;
+  DB1Data.ListaCampos.Assign(CampoMemo.Lines);
+  DB1Data.ListaTabelas.Assign(TabelaMemo.Lines);
+  DB1Data.ListaCondicoes.Assign(CondicaoMemo.Lines);
+
+  if ResultadoClientDataSet.Active then
+    ResultadoClientDataSet.Close;
+  ResultadoClientDataSet.Open;
+end;
 
 end.
