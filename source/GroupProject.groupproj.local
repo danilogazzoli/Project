@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions/>
+  <Transactions>
+    <Transaction>2017/11/26 11:02:43.253,E:\Project\source\GroupProject.groupproj=C:\Users\Danilo\Documents\Embarcadero\Studio\Projects\ProjectGroup1.groupproj</Transaction>
+  </Transactions>
   <Default.Personality>
-    <Projects ActiveProject="E:\Project\source\Exercicio6DLL.dproj"/>
+    <Projects ActiveProject="E:\Project\source\Project.dproj"/>
   </Default.Personality>
 </BorlandProject>

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, Data.DBXFirebird, Data.DB, Data.SqlExpr;
 
 type
-  TDataModule1 = class(TDataModule)
+  TExercicio3DM = class(TDataModule)
     DBSQLConnection: TSQLConnection;
   private
     { Private declarations }
@@ -15,7 +15,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  Exercicio3DM: TExercicio3DM;
 
 implementation
 

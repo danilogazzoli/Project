@@ -1,4 +1,4 @@
-object DataModule1: TDataModule1
+object Exercicio3DM: TExercicio3DM
   OldCreateOrder = False
   Height = 150
   Width = 215
