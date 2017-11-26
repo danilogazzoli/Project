@@ -1,9 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{24DF873D-C3B0-415C-B9AF-D7F3EBBE2155}</ProjectGuid>
+        <ProjectGuid>{9C1A3D45-F311-42DA-8C8F-6B6EC29C71A1}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Project.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Exercicio6DLL.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -23,14 +26,23 @@
     <Target Name="Project:Make">
         <MSBuild Projects="Project.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Exercicio6DLL">
+        <MSBuild Projects="Exercicio6DLL.dproj"/>
+    </Target>
+    <Target Name="Exercicio6DLL:Clean">
+        <MSBuild Projects="Exercicio6DLL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Exercicio6DLL:Make">
+        <MSBuild Projects="Exercicio6DLL.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Project"/>
+        <CallTarget Targets="Project;Exercicio6DLL"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Project:Clean"/>
+        <CallTarget Targets="Project:Clean;Exercicio6DLL:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Project:Make"/>
+        <CallTarget Targets="Project:Make;Exercicio6DLL:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

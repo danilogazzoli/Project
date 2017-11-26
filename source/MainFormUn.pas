@@ -20,6 +20,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Exerccio11Click(Sender: TObject);
     procedure Exerccio21Click(Sender: TObject);
+    procedure Exerccio61Click(Sender: TObject);
   private
     procedure HandleApplicationExceptions(Sender: TObject; E: Exception);
     { Private declarations }
@@ -34,7 +35,7 @@ implementation
 
 {$R *.dfm}
 
-uses Exercicio1FormUn, Exercicio2FormUn;
+uses Exercicio1FormUn, Exercicio2FormUn, Exercicio6FormUn;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
@@ -70,6 +71,18 @@ begin
    finally
      Ex2Form.Free;
    end;
+end;
+
+procedure TMainForm.Exerccio61Click(Sender: TObject);
+var
+  Exercicio6Form: TExercicio6Form;
+begin
+  Exercicio6Form := TExercicio6Form.Create(Self);
+  try
+    Exercicio6Form.ShowModal;
+  finally
+    Exercicio6Form.Free;
+  end;
 end;
 
 end.

@@ -40,6 +40,7 @@ object MainForm: TMainForm
       end
       object Exerccio61: TMenuItem
         Caption = 'Exerc'#237'cio 6'
+        OnClick = Exerccio61Click
       end
       object Exerccio71: TMenuItem
         Caption = 'Exerc'#237'cio 7'
