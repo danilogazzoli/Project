@@ -22,6 +22,9 @@ type
     procedure Exerccio21Click(Sender: TObject);
     procedure Exerccio61Click(Sender: TObject);
     procedure Exerccio71Click(Sender: TObject);
+    procedure Exerccio31Click(Sender: TObject);
+    procedure Exercio51Click(Sender: TObject);
+    procedure Exerccio41Click(Sender: TObject);
   private
     procedure HandleApplicationExceptions(Sender: TObject; E: Exception);
     { Private declarations }
@@ -36,7 +39,8 @@ implementation
 
 {$R *.dfm}
 
-uses Exercicio1FormUn, Exercicio2FormUn, Exercicio6FormUn, Exercicio7FormUn;
+uses Exercicio1FormUn, Exercicio2FormUn, Exercicio6FormUn, Exercicio7FormUn,
+  Exercicio3FormUn, Exercicio5FormUn, Exercicio4FormUn;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
@@ -74,6 +78,30 @@ begin
    end;
 end;
 
+procedure TMainForm.Exerccio31Click(Sender: TObject);
+var
+  Exercicio3Form: TExercicio3Form;
+begin
+ Exercicio3Form := TExercicio3Form.Create(Self);
+  try
+    Exercicio3Form.ShowModal;
+  finally
+    Exercicio3Form.Free;
+  end;
+end;
+
+procedure TMainForm.Exerccio41Click(Sender: TObject);
+var
+  Exercicio4Form : TExercicio4Form;
+begin
+  Exercicio4Form := TExercicio4Form.Create(Self);
+  try
+    Exercicio4Form.ShowModal;
+  finally
+    Exercicio4Form.Free;
+  end;
+end;
+
 procedure TMainForm.Exerccio61Click(Sender: TObject);
 var
   Exercicio6Form: TExercicio6Form;
@@ -95,6 +123,18 @@ begin
     Exercicio7Form.ShowModal;
   finally
     Exercicio7Form.Free;
+  end;
+end;
+
+procedure TMainForm.Exercio51Click(Sender: TObject);
+var
+  Exercicio5Form : TExercicio5Form;
+begin
+  Exercicio5Form := TExercicio5Form.Create(Self);
+  try
+    Exercicio5Form.ShowModal;
+  finally
+    Exercicio5Form.Free;
   end;
 end;
 

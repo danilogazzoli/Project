@@ -31,12 +31,15 @@ object MainForm: TMainForm
       end
       object Exerccio31: TMenuItem
         Caption = 'Exerc'#237'cio 3'
+        OnClick = Exerccio31Click
       end
       object Exerccio41: TMenuItem
         Caption = 'Exerc'#237'cio 4'
+        OnClick = Exerccio41Click
       end
       object Exercio51: TMenuItem
         Caption = 'Exerc'#237'cio 5'
+        OnClick = Exercio51Click
       end
       object Exerccio61: TMenuItem
         Caption = 'Exerc'#237'cio 6'

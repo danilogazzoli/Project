@@ -13,7 +13,11 @@ uses
   Exercicio6FrameUn in 'Exercicio6FrameUn.pas' {Exercicio6Frame: TFrame},
   Exercicio6DLLIntUn in 'Exercicio6DLLIntUn.pas',
   Exercicio7FormUn in 'Exercicio7FormUn.pas' {Exercicio7Form},
-  Exercicio7Un in 'Exercicio7Un.pas';
+  Exercicio7Un in 'Exercicio7Un.pas',
+  Exercicio3FormUn in 'Exercicio3FormUn.pas' {Exercicio3Form},
+  Exercicio3PesqUn in 'Exercicio3PesqUn.pas' {Exercicio3Pesquisa},
+  Exercicio4FormUn in 'Exercicio4FormUn.pas' {Exercicio4Form},
+  Exercicio5FormUn in 'Exercicio5FormUn.pas' {Exercicio5Form};
 
 {$R *.res}
 
