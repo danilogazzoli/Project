@@ -1,16 +1,16 @@
 inherited Exercicio3Form: TExercicio3Form
   Caption = 'Exerc'#237'cio 3 - Tela de Cadastro'
-  ClientHeight = 233
+  ClientHeight = 219
   ClientWidth = 590
   ExplicitWidth = 606
-  ExplicitHeight = 272
+  ExplicitHeight = 258
   PixelsPerInch = 96
   TextHeight = 13
   object CadastroGroupBox: TGroupBox
     Left = 8
     Top = 8
     Width = 574
-    Height = 209
+    Height = 201
     Caption = 'Cadastro de Pessoas'
     TabOrder = 0
     object Nome: TLabel
@@ -48,19 +48,19 @@ inherited Exercicio3Form: TExercicio3Form
       Height = 49
       TabOrder = 0
       object NovoButton: TButton
-        Left = 16
+        Left = 20
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Novo'
+        Action = NovoAction
         TabOrder = 0
       end
       object SalvarButton: TButton
-        Left = 99
+        Left = 101
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Salvar'
+        Action = SalvarAction
         TabOrder = 1
       end
       object EditarButton: TButton
@@ -68,7 +68,7 @@ inherited Exercicio3Form: TExercicio3Form
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Editar'
+        Action = EditarAction
         TabOrder = 2
       end
       object ExcluirButton: TButton
@@ -76,7 +76,7 @@ inherited Exercicio3Form: TExercicio3Form
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Excluir'
+        Action = ExcluirAction
         TabOrder = 3
       end
       object PesquisarButton: TButton
@@ -84,17 +84,17 @@ inherited Exercicio3Form: TExercicio3Form
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Pesquisar'
+        Action = PesquisarAction
         TabOrder = 4
+        OnClick = PesquisarButtonClick
       end
       object SairButton: TButton
         Left = 434
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Sair'
+        Action = SairAction
         TabOrder = 5
-        OnClick = SairButtonClick
       end
     end
     object NomeEdit: TDBEdit
@@ -102,6 +102,8 @@ inherited Exercicio3Form: TExercicio3Form
       Top = 24
       Width = 473
       Height = 21
+      DataField = 'NMPESSOA'
+      DataSource = CadastroDataSource
       TabOrder = 1
     end
     object LogradouroEdit: TDBEdit
@@ -109,6 +111,8 @@ inherited Exercicio3Form: TExercicio3Form
       Top = 51
       Width = 473
       Height = 21
+      DataField = 'DELOGRADOURO'
+      DataSource = CadastroDataSource
       TabOrder = 2
     end
     object BairroEdit: TDBEdit
@@ -116,6 +120,8 @@ inherited Exercicio3Form: TExercicio3Form
       Top = 78
       Width = 473
       Height = 21
+      DataField = 'DEBAIRRO'
+      DataSource = CadastroDataSource
       TabOrder = 3
     end
     object CidadeEdit: TDBEdit
@@ -139,6 +145,45 @@ inherited Exercicio3Form: TExercicio3Form
       Height = 25
       Caption = 'Pesquisar'
       TabOrder = 6
+      OnClick = PesquisarCidadeButtonClick
+    end
+  end
+  object CadastroDataSource: TDataSource
+    DataSet = Exercicio3DM.PessoaClientDataSet
+    Left = 536
+    Top = 8
+  end
+  object CadastroActionList: TActionList
+    Left = 536
+    Top = 64
+    object NovoAction: TAction
+      Caption = '&Novo'
+      OnExecute = NovoActionExecute
+      OnUpdate = NovoActionUpdate
+    end
+    object SalvarAction: TAction
+      Caption = '&Salvar'
+      OnExecute = SalvarActionExecute
+      OnUpdate = SalvarActionUpdate
+    end
+    object EditarAction: TAction
+      Caption = '&Editar'
+      OnExecute = EditarActionExecute
+      OnUpdate = EditarActionUpdate
+    end
+    object ExcluirAction: TAction
+      Caption = '&Excluir'
+      OnExecute = ExcluirActionExecute
+      OnUpdate = ExcluirActionUpdate
+    end
+    object PesquisarAction: TAction
+      Caption = '&Pesquisar'
+      OnUpdate = PesquisarActionUpdate
+    end
+    object SairAction: TAction
+      Caption = 'Sai&r'
+      OnExecute = SairActionExecute
+      OnUpdate = SairActionUpdate
     end
   end
 end

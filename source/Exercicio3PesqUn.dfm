@@ -3,6 +3,7 @@ inherited Exercicio3Pesquisa: TExercicio3Pesquisa
   Caption = 'Exerc'#237'cio 3 - Formul'#225'rio de Pesquisa'
   ClientHeight = 218
   ClientWidth = 457
+  OnCreate = FormCreate
   ExplicitWidth = 463
   ExplicitHeight = 247
   PixelsPerInch = 96
@@ -25,8 +26,9 @@ inherited Exercicio3Pesquisa: TExercicio3Pesquisa
     Height = 25
     Caption = 'Pesquisar'
     TabOrder = 1
+    OnClick = PesquisarButtonClick
   end
-  object DBGrid1: TDBGrid
+  object ResultadoDBGrid: TDBGrid
     Left = 8
     Top = 45
     Width = 431
@@ -40,18 +42,20 @@ inherited Exercicio3Pesquisa: TExercicio3Pesquisa
   end
   object SelecionarButton: TButton
     Left = 8
-    Top = 174
+    Top = 175
     Width = 75
     Height = 25
     Caption = 'Selecionar'
     TabOrder = 3
+    OnClick = SelecionarButtonClick
   end
   object CancelarButton: TButton
     Left = 102
-    Top = 175
+    Top = 176
     Width = 75
     Height = 25
     Caption = 'Cancelar'
     TabOrder = 4
+    OnClick = CancelarButtonClick
   end
 end

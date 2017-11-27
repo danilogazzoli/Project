@@ -1,6 +1,6 @@
 object Exercicio3DM: TExercicio3DM
   OldCreateOrder = False
-  Height = 201
+  Height = 314
   Width = 597
   object DBSQLConnection: TSQLConnection
     DriverName = 'Firebird'
@@ -115,9 +115,16 @@ object Exercicio3DM: TExercicio3DM
     end
   end
   object CidadeSQLDataSet: TSQLDataSet
-    CommandText = 'select CDCIDADE, NMCIDADE, UF from CIDADE'
+    CommandText = 
+      'select CDCIDADE, NMCIDADE, UF from CIDADE'#13#10'WHERE CDCidade=:Codig' +
+      'o'
     MaxBlobSize = -1
-    Params = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'Codigo'
+        ParamType = ptInput
+      end>
     SQLConnection = DBSQLConnection
     Left = 184
     Top = 112
@@ -144,7 +151,12 @@ object Exercicio3DM: TExercicio3DM
   end
   object CidadeClientDataSet: TClientDataSet
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'Codigo'
+        ParamType = ptInput
+      end>
     ProviderName = 'CidadeDataSetProvider'
     Left = 408
     Top = 112
@@ -159,6 +171,62 @@ object Exercicio3DM: TExercicio3DM
       Size = 100
     end
     object CidadeClientDataSetUF: TStringField
+      FieldName = 'UF'
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object PesquisaCidadeSQLDataSet: TSQLDataSet
+    CommandText = 'select CDCIDADE, NMCIDADE, UF from CIDADE'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBSQLConnection
+    Left = 184
+    Top = 168
+    object IntegerField1: TIntegerField
+      FieldName = 'CDCIDADE'
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'NMCIDADE'
+      Required = True
+      Size = 100
+    end
+    object StringField2: TStringField
+      FieldName = 'UF'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object PesquisaCidadeProvider: TDataSetProvider
+    DataSet = PesquisaCidadeSQLDataSet
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 296
+    Top = 168
+  end
+  object PesquisaCidadeClientDataSet: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'Codigo'
+        ParamType = ptInput
+      end>
+    ProviderName = 'PesquisaCidadeProvider'
+    Left = 416
+    Top = 168
+    object IntegerField2: TIntegerField
+      FieldName = 'CDCIDADE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object StringField3: TStringField
+      FieldName = 'NMCIDADE'
+      Required = True
+      Size = 100
+    end
+    object StringField4: TStringField
       FieldName = 'UF'
       FixedChar = True
       Size = 2

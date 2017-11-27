@@ -31,10 +31,20 @@ type
     CidadeClientDataSetCDCIDADE: TIntegerField;
     CidadeClientDataSetNMCIDADE: TStringField;
     CidadeClientDataSetUF: TStringField;
+    PesquisaCidadeSQLDataSet: TSQLDataSet;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    PesquisaCidadeProvider: TDataSetProvider;
+    PesquisaCidadeClientDataSet: TClientDataSet;
+    IntegerField2: TIntegerField;
+    StringField3: TStringField;
+    StringField4: TStringField;
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure SelectCidadeById(const aId: integer);
   end;
 
 var
@@ -45,5 +55,14 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+{ TExercicio3DM }
+
+procedure TExercicio3DM.SelectCidadeById(const aId: integer);
+begin
+  CidadeClientDataSet.Close;
+  CidadeClientDataSet.ParamByName('Codigo').AsInteger := aId;
+  CidadeClientDataSet.Open;
+end;
 
 end.
