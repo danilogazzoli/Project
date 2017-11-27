@@ -43,16 +43,16 @@ type
     PesquisaPessoaSQLDataSet: TSQLDataSet;
     PesquisaPessoaProvider: TDataSetProvider;
     PesquisaPessoaClientDataSet: TClientDataSet;
-    PesquisaPessoaSQLDataSetCDCIDADE: TIntegerField;
     PesquisaPessoaSQLDataSetCDPESSOA: TIntegerField;
     PesquisaPessoaSQLDataSetDEBAIRRO: TStringField;
     PesquisaPessoaSQLDataSetDELOGRADOURO: TStringField;
     PesquisaPessoaSQLDataSetNMPESSOA: TStringField;
-    PesquisaPessoaClientDataSetCDCIDADE: TIntegerField;
     PesquisaPessoaClientDataSetCDPESSOA: TIntegerField;
     PesquisaPessoaClientDataSetDEBAIRRO: TStringField;
     PesquisaPessoaClientDataSetDELOGRADOURO: TStringField;
     PesquisaPessoaClientDataSetNMPESSOA: TStringField;
+    PesquisaPessoaSQLDataSetNMCIDADE: TStringField;
+    PesquisaPessoaClientDataSetNMCIDADE: TStringField;
     procedure PessoaClientDataSetNewRecord(DataSet: TDataSet);
   private
     { Private declarations }

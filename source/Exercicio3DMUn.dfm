@@ -244,17 +244,14 @@ object Exercicio3DM: TExercicio3DM
   end
   object PesquisaPessoaSQLDataSet: TSQLDataSet
     CommandText = 
-      'select CDCIDADE, CDPESSOA, DEBAIRRO, DELOGRADOURO, NMPESSOA from' +
-      ' PESSOA'
+      'select  pes.CDPESSOA, pes. NMPESSOA,  DEBAIRRO, pes.DELOGRADOURO' +
+      ', cid.nmcidade from PESSOA pes   JOIN CIDADE cid ON pes.cdcidade' +
+      ' = cid.cdcidade'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBSQLConnection
     Left = 184
     Top = 232
-    object PesquisaPessoaSQLDataSetCDCIDADE: TIntegerField
-      FieldName = 'CDCIDADE'
-      Required = True
-    end
     object PesquisaPessoaSQLDataSetCDPESSOA: TIntegerField
       FieldName = 'CDPESSOA'
       Required = True
@@ -272,6 +269,11 @@ object Exercicio3DM: TExercicio3DM
       Required = True
       Size = 100
     end
+    object PesquisaPessoaSQLDataSetNMCIDADE: TStringField
+      FieldName = 'NMCIDADE'
+      Required = True
+      Size = 100
+    end
   end
   object PesquisaPessoaProvider: TDataSetProvider
     DataSet = PesquisaPessoaSQLDataSet
@@ -282,19 +284,21 @@ object Exercicio3DM: TExercicio3DM
   object PesquisaPessoaClientDataSet: TClientDataSet
     Aggregates = <>
     CommandText = 
-      'select CDCIDADE, CDPESSOA, DEBAIRRO, DELOGRADOURO, NMPESSOA from' +
-      ' PESSOA'
+      'select  pes.CDPESSOA, pes. NMPESSOA,  DEBAIRRO, pes.DELOGRADOURO' +
+      ', cid.nmcidade from PESSOA pes   JOIN CIDADE cid ON pes.cdcidade' +
+      ' = cid.cdcidade'
     Params = <>
     ProviderName = 'PesquisaPessoaProvider'
     Left = 416
     Top = 232
-    object PesquisaPessoaClientDataSetCDCIDADE: TIntegerField
-      FieldName = 'CDCIDADE'
-      Required = True
-    end
     object PesquisaPessoaClientDataSetCDPESSOA: TIntegerField
       FieldName = 'CDPESSOA'
       Required = True
+    end
+    object PesquisaPessoaClientDataSetNMPESSOA: TStringField
+      FieldName = 'NMPESSOA'
+      Required = True
+      Size = 100
     end
     object PesquisaPessoaClientDataSetDEBAIRRO: TStringField
       FieldName = 'DEBAIRRO'
@@ -304,8 +308,8 @@ object Exercicio3DM: TExercicio3DM
       FieldName = 'DELOGRADOURO'
       Size = 100
     end
-    object PesquisaPessoaClientDataSetNMPESSOA: TStringField
-      FieldName = 'NMPESSOA'
+    object PesquisaPessoaClientDataSetNMCIDADE: TStringField
+      FieldName = 'NMCIDADE'
       Required = True
       Size = 100
     end
