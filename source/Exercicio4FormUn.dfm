@@ -118,6 +118,7 @@ inherited Exercicio4Form: TExercicio4Form
   object ResultadoClientDataSet: TClientDataSet
     Aggregates = <>
     Params = <>
+    ProviderName = 'ResultadoProvider'
     Left = 368
     Top = 136
   end
