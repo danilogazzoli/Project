@@ -27,6 +27,7 @@ type
     procedure Exerccio41Click(Sender: TObject);
   private
     procedure HandleApplicationExceptions(Sender: TObject; E: Exception);
+    procedure CriarForm(const aClasseForm: String);
     { Private declarations }
   public
     { Public declarations }
@@ -38,9 +39,6 @@ var
 implementation
 
 {$R *.dfm}
-
-uses Exercicio1FormUn, Exercicio2FormUn, Exercicio6FormUn, Exercicio7FormUn,
-  Exercicio3FormUn, Exercicio5FormUn, Exercicio4FormUn;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
@@ -55,87 +53,54 @@ begin
 end;
 
 procedure TMainForm.Exerccio11Click(Sender: TObject);
-var
-  Ex1Form: TExercicio1Form;
 begin
-   Ex1Form := TExercicio1Form.Create(Self);
-   try
-     Ex1Form.ShowModal;
-   finally
-     Ex1Form.Free;
-   end;
+  Self.CriarForm('TExercicio1Form');
 end;
 
 procedure TMainForm.Exerccio21Click(Sender: TObject);
-var
-  Ex2Form: TExercicio2Form;
 begin
-   Ex2Form := TExercicio2Form.Create(Self);
-   try
-     Ex2Form.ShowModal;
-   finally
-     Ex2Form.Free;
-   end;
+  Self.CriarForm('TExercicio2Form');
 end;
 
 procedure TMainForm.Exerccio31Click(Sender: TObject);
-var
-  Exercicio3Form: TExercicio3Form;
 begin
- Exercicio3Form := TExercicio3Form.Create(Self);
-  try
-    Exercicio3Form.ShowModal;
-  finally
-    Exercicio3Form.Free;
-  end;
+  Self.CriarForm('TExercicio3Form')
 end;
 
 procedure TMainForm.Exerccio41Click(Sender: TObject);
-var
-  Exercicio4Form : TExercicio4Form;
 begin
-  Exercicio4Form := TExercicio4Form.Create(Self);
-  try
-    Exercicio4Form.ShowModal;
-  finally
-    Exercicio4Form.Free;
-  end;
-end;
-
-procedure TMainForm.Exerccio61Click(Sender: TObject);
-var
-  Exercicio6Form: TExercicio6Form;
-begin
-  Exercicio6Form := TExercicio6Form.Create(Self);
-  try
-    Exercicio6Form.ShowModal;
-  finally
-    Exercicio6Form.Free;
-  end;
-end;
-
-procedure TMainForm.Exerccio71Click(Sender: TObject);
-var
-  Exercicio7Form: TExercicio7Form;
-begin
-  Exercicio7Form := TExercicio7Form.Create(Self);
-  try
-    Exercicio7Form.ShowModal;
-  finally
-    Exercicio7Form.Free;
-  end;
+  Self.CriarForm('TExercicio4Form')
 end;
 
 procedure TMainForm.Exercio51Click(Sender: TObject);
-var
-  Exercicio5Form : TExercicio5Form;
 begin
-  Exercicio5Form := TExercicio5Form.Create(Self);
+ Self.CriarForm('TExercicio5Form');
+end;
+
+procedure TMainForm.Exerccio61Click(Sender: TObject);
+begin
+  Self.CriarForm('TExercicio6Form');
+end;
+
+procedure TMainForm.Exerccio71Click(Sender: TObject);
+begin
+  Self.CriarForm('TExercicio7Form');
+end;
+
+procedure TMainForm.CriarForm(const aClasseForm : String);
+var
+  _Classe : TFormClass;
+  _Form : TForm;
+begin
+  _Classe := TFormClass(FindClass(aClasseForm));
+  _Form := _Classe.Create(nil);
   try
-    Exercicio5Form.ShowModal;
+    _Form.ShowModal;
   finally
-    Exercicio5Form.Free;
+    FreeAndNil(_Form);
   end;
 end;
+
+
 
 end.

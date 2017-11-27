@@ -29,4 +29,11 @@ begin
   CirculoFrame.TipoGeometrico := tgCirculo;
 end;
 
+
+initialization
+  RegisterClass(TExercicio6Form);
+
+finalization
+  UnregisterClass(TExercicio6Form);
+
 end.

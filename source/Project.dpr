@@ -17,7 +17,8 @@ uses
   Exercicio3FormUn in 'Exercicio3FormUn.pas' {Exercicio3Form},
   Exercicio3PesqUn in 'Exercicio3PesqUn.pas' {Exercicio3Pesquisa},
   Exercicio4FormUn in 'Exercicio4FormUn.pas' {Exercicio4Form},
-  Exercicio5FormUn in 'Exercicio5FormUn.pas' {Exercicio5Form};
+  Exercicio5FormUn in 'Exercicio5FormUn.pas' {Exercicio5Form},
+  Exercicio5Un in 'Exercicio5Un.pas';
 
 {$R *.res}
 

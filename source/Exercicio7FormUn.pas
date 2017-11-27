@@ -144,4 +144,10 @@ begin
   FThreadId := Value;
 end;
 
+initialization
+  RegisterClass(TExercicio7Form);
+
+finalization
+  UnregisterClass(TExercicio7Form);
+
 end.

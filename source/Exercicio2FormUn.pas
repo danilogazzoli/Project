@@ -64,4 +64,12 @@ begin
   end;
 end;
 
+
+initialization
+  RegisterClass(TExercicio2Form);
+
+finalization
+  UnregisterClass(TExercicio2Form);
+
+
 end.

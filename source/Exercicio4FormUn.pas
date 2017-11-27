@@ -49,4 +49,13 @@ begin
   ResultadoClientDataSet.Open;
 end;
 
+
+
+initialization
+  RegisterClass(TExercicio4Form);
+
+finalization
+  UnregisterClass(TExercicio4Form);
+
+
 end.

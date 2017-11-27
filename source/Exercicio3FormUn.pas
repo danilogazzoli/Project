@@ -45,4 +45,13 @@ begin
   Close;
 end;
 
+
+
+initialization
+  RegisterClass(TExercicio3Form);
+
+finalization
+  UnregisterClass(TExercicio3Form);
+
+
 end.

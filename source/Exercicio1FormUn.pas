@@ -95,4 +95,10 @@ begin
   Close;
 end;
 
+initialization
+  RegisterClass(TExercicio1Form);
+
+finalization
+  UnregisterClass(TExercicio1Form);
+
 end.
