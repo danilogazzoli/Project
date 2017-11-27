@@ -42,16 +42,30 @@ procedure TGenerateFile.ExportRecords(const aFileName: string; aDataSet: TDataSe
 var
   _Arquivo: TFileStream;
   _linha: string;
+  _FH: NativeUInt;
+
+const  szChar = SizeOf(Char);
+
 begin
-  _Arquivo := TFileStream.Create(aFileName, fmOpenWrite);
+  //if not FileExists(aFileName) then
+  //  _FH := fmCreate
+  //else
+  //begin
+  _FH := fmOpenReadWrite;
+  _linha := #13#10;
+  //end;
+
+  _Arquivo := TFileStream.Create(aFileName, _FH);
   try
+    _Arquivo.Seek(0, soFromEnd);
     aDataSet.First;
     while not aDataSet.Eof do
     begin
       _linha := Self.FillLine(aDataSet, 'nmpessoa', 50);
       _linha := _linha + Self.FillLine(aDataSet, 'nmcidade', 30);
       _linha := _linha + Self.FillLine(aDataSet, 'uf', 2);
-      _Arquivo.WriteBuffer(_linha, length(_linha));
+      _Arquivo.WriteBuffer(Pointer(_linha)^, (Length(_linha) * szChar));
+      _linha := #13#10;
       aDataSet.Next;
     end;
 
@@ -60,4 +74,4 @@ begin
   end;
 end;
 
-end.
+end.
