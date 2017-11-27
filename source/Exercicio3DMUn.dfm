@@ -28,8 +28,8 @@ object Exercicio3DM: TExercicio3DM
       'VendorLibWin64=gds32.dll'
       'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
       
-        'Database=10.42.0.106/3050:/home/danilo/Downloads/Project/db/data' +
-        'base.fdb'
+        'Database=localhost:C:\Users\Danilo\Desktop\ProvaDelphiDB1\databa' +
+        'se\database.fdb'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Role=RoleName'
@@ -45,15 +45,22 @@ object Exercicio3DM: TExercicio3DM
       'RoleName=RoleName'
       'ServerCharSet='
       'Trim Char=False')
+    Connected = True
     Left = 88
     Top = 56
   end
   object PessoaSQLDataSet: TSQLDataSet
     CommandText = 
       'select CDPESSOA,'#13#10'          NMPESSOA,'#13#10'           DELOGRADOURO, ' +
-      #13#10'           DEBAIRRO, '#13#10'           CDCIDADE'#13#10#13#10' from PESSOA'
+      #13#10'           DEBAIRRO, '#13#10'           CDCIDADE'#13#10#13#10' from PESSOA'#13#10#13#10 +
+      'WHERE '#13#10'   CDPessoa = :Codigo'
     MaxBlobSize = -1
-    Params = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'Codigo'
+        ParamType = ptInput
+      end>
     SQLConnection = DBSQLConnection
     Left = 184
     Top = 56
@@ -87,8 +94,15 @@ object Exercicio3DM: TExercicio3DM
   end
   object PessoaClientDataSet: TClientDataSet
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'Codigo'
+        ParamType = ptInput
+        Value = 0
+      end>
     ProviderName = 'PessoaDataSetProvider'
+    OnNewRecord = PessoaClientDataSetNewRecord
     Left = 408
     Top = 56
     object PessoaClientDataSetCDPESSOA: TIntegerField
@@ -207,12 +221,8 @@ object Exercicio3DM: TExercicio3DM
   end
   object PesquisaCidadeClientDataSet: TClientDataSet
     Aggregates = <>
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'Codigo'
-        ParamType = ptInput
-      end>
+    CommandText = 'select CDCIDADE, NMCIDADE, UF from CIDADE'
+    Params = <>
     ProviderName = 'PesquisaCidadeProvider'
     Left = 416
     Top = 168
@@ -230,6 +240,74 @@ object Exercicio3DM: TExercicio3DM
       FieldName = 'UF'
       FixedChar = True
       Size = 2
+    end
+  end
+  object PesquisaPessoaSQLDataSet: TSQLDataSet
+    CommandText = 
+      'select CDCIDADE, CDPESSOA, DEBAIRRO, DELOGRADOURO, NMPESSOA from' +
+      ' PESSOA'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBSQLConnection
+    Left = 184
+    Top = 232
+    object PesquisaPessoaSQLDataSetCDCIDADE: TIntegerField
+      FieldName = 'CDCIDADE'
+      Required = True
+    end
+    object PesquisaPessoaSQLDataSetCDPESSOA: TIntegerField
+      FieldName = 'CDPESSOA'
+      Required = True
+    end
+    object PesquisaPessoaSQLDataSetDEBAIRRO: TStringField
+      FieldName = 'DEBAIRRO'
+      Size = 100
+    end
+    object PesquisaPessoaSQLDataSetDELOGRADOURO: TStringField
+      FieldName = 'DELOGRADOURO'
+      Size = 100
+    end
+    object PesquisaPessoaSQLDataSetNMPESSOA: TStringField
+      FieldName = 'NMPESSOA'
+      Required = True
+      Size = 100
+    end
+  end
+  object PesquisaPessoaProvider: TDataSetProvider
+    DataSet = PesquisaPessoaSQLDataSet
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 296
+    Top = 232
+  end
+  object PesquisaPessoaClientDataSet: TClientDataSet
+    Aggregates = <>
+    CommandText = 
+      'select CDCIDADE, CDPESSOA, DEBAIRRO, DELOGRADOURO, NMPESSOA from' +
+      ' PESSOA'
+    Params = <>
+    ProviderName = 'PesquisaPessoaProvider'
+    Left = 416
+    Top = 232
+    object PesquisaPessoaClientDataSetCDCIDADE: TIntegerField
+      FieldName = 'CDCIDADE'
+      Required = True
+    end
+    object PesquisaPessoaClientDataSetCDPESSOA: TIntegerField
+      FieldName = 'CDPESSOA'
+      Required = True
+    end
+    object PesquisaPessoaClientDataSetDEBAIRRO: TStringField
+      FieldName = 'DEBAIRRO'
+      Size = 100
+    end
+    object PesquisaPessoaClientDataSetDELOGRADOURO: TStringField
+      FieldName = 'DELOGRADOURO'
+      Size = 100
+    end
+    object PesquisaPessoaClientDataSetNMPESSOA: TStringField
+      FieldName = 'NMPESSOA'
+      Required = True
+      Size = 100
     end
   end
 end

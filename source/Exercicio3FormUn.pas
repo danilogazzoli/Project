@@ -35,6 +35,7 @@ type
     ExcluirAction: TAction;
     PesquisarAction: TAction;
     SairAction: TAction;
+    CidadeDataSource: TDataSource;
     procedure PesquisarCidadeButtonClick(Sender: TObject);
     procedure NovoActionExecute(Sender: TObject);
     procedure SairActionExecute(Sender: TObject);
@@ -48,6 +49,7 @@ type
     procedure PesquisarActionUpdate(Sender: TObject);
     procedure SairActionUpdate(Sender: TObject);
     procedure PesquisarButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,8 +72,8 @@ end;
 procedure TExercicio3Form.EditarActionUpdate(Sender: TObject);
 begin
   inherited;
-  (Sender as TAction).Enabled := (Exercicio3DM.CidadeClientDataSet.Active = True) and
-                                 (not Exercicio3DM.CidadeClientDataSet.IsEmpty)
+  (Sender as TAction).Enabled := (Exercicio3DM.PessoaClientDataSet.Active = True) and
+                                 (not Exercicio3DM.PessoaClientDataSet.IsEmpty)
 end;
 
 procedure TExercicio3Form.ExcluirActionExecute(Sender: TObject);
@@ -84,20 +86,28 @@ end;
 procedure TExercicio3Form.ExcluirActionUpdate(Sender: TObject);
 begin
   inherited;
-  (Sender as TAction).Enabled := EditarAction.Enabled;
+  (Sender as TAction).Enabled := EditarAction.Enabled and
+                                (Exercicio3DM.PessoaClientDataSet.State = dsBrowse);
+end;
+
+procedure TExercicio3Form.FormCreate(Sender: TObject);
+begin
+  inherited;
+  Exercicio3DM.PessoaClientDataSet.Open;
 end;
 
 procedure TExercicio3Form.NovoActionExecute(Sender: TObject);
 begin
   inherited;
   Exercicio3DM.PessoaClientDataSet.Insert;
+  NomeEdit.SetFocus;
 end;
 
 procedure TExercicio3Form.NovoActionUpdate(Sender: TObject);
 begin
   inherited;
-  (Sender as TAction).Enabled := (Exercicio3DM.CidadeClientDataSet.Active = False) or
-                                 (Exercicio3DM.CidadeClientDataSet.IsEmpty);
+  (Sender as TAction).Enabled := (Exercicio3DM.PessoaClientDataSet.Active = False) or
+                                 (Exercicio3DM.PessoaClientDataSet.State = dsBrowse);
 end;
 
 procedure TExercicio3Form.PesquisarActionUpdate(Sender: TObject);
@@ -114,10 +124,13 @@ begin
   _Pesq := TExercicio3Pesquisa.Create(Self);
   try
     _Pesq.PesquisaFieldName := 'nmpessoa';
-    _Pesq.PesquisaFieldName := 'cdpessoa';
+    _Pesq.PesquisaClientDataSet := Exercicio3DM.PesquisaPessoaClientDataSet ;
     _Pesq.ShowModal;
-    if (_Pesq.ModalResult = mrOk) then
+    if (_Pesq.getIdPesquisa > 0) then
     begin
+      Exercicio3DM.PessoaClientDataSet.Close;
+      Exercicio3DM.PessoaClientDataSet.ParamByName('Codigo').AsInteger := _Pesq.getIdPesquisa;
+      Exercicio3DM.PessoaClientDataSet.Open;
     end;
   finally
     _Pesq.Free;
@@ -132,9 +145,9 @@ begin
   _Pesq := TExercicio3Pesquisa.Create(Self);
   try
     _Pesq.PesquisaFieldName := 'nmcidade';
-    _Pesq.PesquisaFieldName := 'cdcidade';
+    _Pesq.PesquisaClientDataSet  := Exercicio3DM.PesquisaCidadeClientDataSet;
     _Pesq.ShowModal;
-    if (_Pesq.ModalResult = mrOk) then
+    if (_Pesq.getIdPesquisa > 0) then
     begin
       if not (Exercicio3DM.PessoaClientDataSet.State in dsEditModes) then
         Exercicio3DM.PessoaClientDataSet.Edit;
@@ -168,8 +181,8 @@ end;
 procedure TExercicio3Form.SalvarActionUpdate(Sender: TObject);
 begin
   inherited;
-  (Sender as TAction).Enabled := (Exercicio3DM.CidadeClientDataSet.Active = True) and
-                                 (Exercicio3DM.CidadeClientDataSet.State in dsEditModes );
+  (Sender as TAction).Enabled := (Exercicio3DM.PessoaClientDataSet.Active = True) and
+                                 (Exercicio3DM.PessoaClientDataSet.State in dsEditModes );
 end;
 
 initialization

@@ -14,6 +14,7 @@ type
     ResultadoDBGrid: TDBGrid;
     SelecionarButton: TButton;
     CancelarButton: TButton;
+    PesquisaDataSource: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure PesquisarButtonClick(Sender: TObject);
     procedure SelecionarButtonClick(Sender: TObject);
@@ -44,7 +45,6 @@ procedure TExercicio3Pesquisa.FormCreate(Sender: TObject);
 begin
   inherited;
   Self.FIdPesquisa := -1;
-  Self.ExecuteSearch('NULL');
 end;
 
 function TExercicio3Pesquisa.getIdPesquisa: integer;
@@ -63,14 +63,17 @@ procedure TExercicio3Pesquisa.ExecuteSearch(const aSearchValue: string);
 var
   _OriginalCommandText : string;
 begin
-  _OriginalCommandText := FPesquisaClientDataSet.CommandText;
-  try
-    FPesquisaClientDataSet.CommandText := _OriginalCommandText +
-      ' WHERE ' + Self.FPesquisaFieldName + ' LIKE ' + QuotedStr('%' + aSearchValue + '%');
-    FPesquisaClientDataSet.Close;
-    FPesquisaClientDataSet.Open;
-  finally
-    FPesquisaClientDataSet.CommandText := _OriginalCommandText;
+  if (Self.FPesquisaClientDataSet <> nil) and (Self.FPesquisaFieldName <> EmptyStr) then
+  begin
+    _OriginalCommandText := FPesquisaClientDataSet.CommandText;
+    try
+      FPesquisaClientDataSet.CommandText := _OriginalCommandText +
+        ' WHERE ' + Self.FPesquisaFieldName + ' LIKE ' + QuotedStr('%' + aSearchValue + '%');
+      FPesquisaClientDataSet.Close;
+      FPesquisaClientDataSet.Open;
+    finally
+      FPesquisaClientDataSet.CommandText := _OriginalCommandText;
+    end;
   end;
 end;
 
@@ -91,8 +94,7 @@ begin
   end
   else
   begin
-    if FPesquisaClientDataSet.FindField(Self.FPesquisaFieldName) <> nil then
-      Self.FIdPesquisa := FPesquisaClientDataSet.FieldByName(Self.FPesquisaFieldName).AsInteger;
+    Self.FIdPesquisa := FPesquisaClientDataSet.Fields[0].AsInteger;
     Self.ModalResult := mrOk;
     Self.Close;
   end;
@@ -102,11 +104,14 @@ procedure TExercicio3Pesquisa.SetPesquisaClientDataSet(
   const Value: TClientDataSet);
 begin
   FPesquisaClientDataSet := Value;
+  PesquisaDataSource.DataSet := Value;
+  Self.ExecuteSearch('NULL');
 end;
 
 procedure TExercicio3Pesquisa.SetPesquisaFieldName(const Value: string);
 begin
   FPesquisaFieldName := Value;
+  Self.ExecuteSearch('NULL');
 end;
 
 end.

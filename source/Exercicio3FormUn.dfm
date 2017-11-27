@@ -1,7 +1,9 @@
 inherited Exercicio3Form: TExercicio3Form
+  BorderStyle = bsDialog
   Caption = 'Exerc'#237'cio 3 - Tela de Cadastro'
-  ClientHeight = 219
-  ClientWidth = 590
+  ClientHeight = 229
+  ClientWidth = 600
+  OnCreate = FormCreate
   ExplicitWidth = 606
   ExplicitHeight = 258
   PixelsPerInch = 96
@@ -129,6 +131,10 @@ inherited Exercicio3Form: TExercicio3Form
       Top = 105
       Width = 249
       Height = 21
+      DataField = 'NMCIDADE'
+      DataSource = CidadeDataSource
+      Enabled = False
+      ReadOnly = True
       TabOrder = 4
     end
     object UFEdit: TDBEdit
@@ -136,6 +142,10 @@ inherited Exercicio3Form: TExercicio3Form
       Top = 105
       Width = 109
       Height = 21
+      DataField = 'UF'
+      DataSource = CidadeDataSource
+      Enabled = False
+      ReadOnly = True
       TabOrder = 5
     end
     object PesquisarCidadeButton: TButton
@@ -185,5 +195,10 @@ inherited Exercicio3Form: TExercicio3Form
       OnExecute = SairActionExecute
       OnUpdate = SairActionUpdate
     end
+  end
+  object CidadeDataSource: TDataSource
+    DataSet = Exercicio3DM.CidadeClientDataSet
+    Left = 504
+    Top = 8
   end
 end

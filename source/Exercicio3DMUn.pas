@@ -40,11 +40,26 @@ type
     IntegerField2: TIntegerField;
     StringField3: TStringField;
     StringField4: TStringField;
+    PesquisaPessoaSQLDataSet: TSQLDataSet;
+    PesquisaPessoaProvider: TDataSetProvider;
+    PesquisaPessoaClientDataSet: TClientDataSet;
+    PesquisaPessoaSQLDataSetCDCIDADE: TIntegerField;
+    PesquisaPessoaSQLDataSetCDPESSOA: TIntegerField;
+    PesquisaPessoaSQLDataSetDEBAIRRO: TStringField;
+    PesquisaPessoaSQLDataSetDELOGRADOURO: TStringField;
+    PesquisaPessoaSQLDataSetNMPESSOA: TStringField;
+    PesquisaPessoaClientDataSetCDCIDADE: TIntegerField;
+    PesquisaPessoaClientDataSetCDPESSOA: TIntegerField;
+    PesquisaPessoaClientDataSetDEBAIRRO: TStringField;
+    PesquisaPessoaClientDataSetDELOGRADOURO: TStringField;
+    PesquisaPessoaClientDataSetNMPESSOA: TStringField;
+    procedure PessoaClientDataSetNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure SelectCidadeById(const aId: integer);
+    function geNextIdPessoa: integer;
   end;
 
 var
@@ -57,6 +72,28 @@ implementation
 {$R *.dfm}
 
 { TExercicio3DM }
+
+function TExercicio3DM.geNextIdPessoa: integer;
+var
+  _qry: TSQLDataSet;
+begin
+  _qry := TSQLDataSet.Create(Self);
+  try
+    _qry.SQLConnection := Self.DBSQLConnection;
+    _qry.CommandText := 'SELECT GEN_ID( Pessoa_Generator, 1 ) FROM RDB$DATABASE;';
+    _qry.Open;
+    Result := _qry.Fields[0].AsInteger;
+  finally
+    _qry.Free;
+  end;
+
+end;
+
+procedure TExercicio3DM.PessoaClientDataSetNewRecord(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('cdPessoa').AsInteger := Self.geNextIdPessoa;
+  CidadeClientDataSet.Close;
+end;
 
 procedure TExercicio3DM.SelectCidadeById(const aId: integer);
 begin
