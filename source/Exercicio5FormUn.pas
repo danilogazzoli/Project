@@ -64,7 +64,9 @@ begin
   try
     _GenerateFile := TGenerateFile.Create;
     try
-      //_GenerateFile.ExportRecords();
+      Exercicio3DM.ArquivoClientDataSet.Open;
+      if Exercicio3DM.ArquivoClientDataSet.Active then
+        _GenerateFile.ExportRecords(LocalArquivoEdit.Text, Exercicio3DM.ArquivoClientDataSet);
     finally
       _GenerateFile.Free;
     end;

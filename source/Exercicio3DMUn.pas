@@ -53,6 +53,12 @@ type
     PesquisaPessoaClientDataSetNMPESSOA: TStringField;
     PesquisaPessoaSQLDataSetNMCIDADE: TStringField;
     PesquisaPessoaClientDataSetNMCIDADE: TStringField;
+    ArquivoSQLDataSet: TSQLDataSet;
+    ArquivoDataSetProvider: TDataSetProvider;
+    ArquivoClientDataSet: TClientDataSet;
+    ArquivoSQLDataSetNMPESSOA: TStringField;
+    ArquivoSQLDataSetNMCIDADE: TStringField;
+    ArquivoSQLDataSetUF: TStringField;
     procedure PessoaClientDataSetNewRecord(DataSet: TDataSet);
   private
     { Private declarations }

@@ -12,9 +12,10 @@ type
     function LeftPad(const aStr: string; const aCh: Char; const aLen: Integer): string;
     function FillLine(aDataSet: TDataSet; const aFieldName: string;
       const aLength: integer): string;
+    function getFileName: string;
 
   public
-    procedure ExportRecords(const aFileName: string; aDataSet: TDataSet);
+    procedure ExportRecords(const aFolderName: string; aDataSet: TDataSet);
   end;
 
 implementation
@@ -38,34 +39,43 @@ begin
   Result := LeftPad(Result, cSpace, aLength);
 end;
 
-procedure TGenerateFile.ExportRecords(const aFileName: string; aDataSet: TDataSet);
+function TGenerateFile.getFileName: string;
+begin
+  Result := 'Arquivo.txt';
+end;
+
+procedure TGenerateFile.ExportRecords(const aFolderName: string; aDataSet: TDataSet);
 var
   _Arquivo: TFileStream;
   _linha: string;
   _FH: NativeUInt;
-
+  _countRecords : integer;
 const  szChar = SizeOf(Char);
 
 begin
+  if (not aDataSet.Active) then
+    raise Exception.Create('Verifique se há registros a serem exportados.');
   //if not FileExists(aFileName) then
-  //  _FH := fmCreate
+    _FH := fmCreate;
   //else
   //begin
-  _FH := fmOpenReadWrite;
-  _linha := #13#10;
+  //_FH := fmOpenReadWrite;
+  //_linha := #13#10;
   //end;
-
-  _Arquivo := TFileStream.Create(aFileName, _FH);
+  _countRecords := 0;
+  _linha := EmptyStr;
+  _Arquivo := TFileStream.Create(aFolderName + '\' + Self.getFileName, _FH);
   try
     _Arquivo.Seek(0, soFromEnd);
     aDataSet.First;
-    while not aDataSet.Eof do
+    while (not aDataSet.Eof) and (_countRecords <= 100) do
     begin
-      _linha := Self.FillLine(aDataSet, 'nmpessoa', 50);
+      _linha := _linha + Self.FillLine(aDataSet, 'nmpessoa', 50);
       _linha := _linha + Self.FillLine(aDataSet, 'nmcidade', 30);
       _linha := _linha + Self.FillLine(aDataSet, 'uf', 2);
       _Arquivo.WriteBuffer(Pointer(_linha)^, (Length(_linha) * szChar));
       _linha := #13#10;
+      inc(_countRecords);
       aDataSet.Next;
     end;
 

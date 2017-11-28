@@ -1,6 +1,6 @@
 object Exercicio3DM: TExercicio3DM
   OldCreateOrder = False
-  Height = 314
+  Height = 368
   Width = 597
   object DBSQLConnection: TSQLConnection
     DriverName = 'Firebird'
@@ -313,5 +313,43 @@ object Exercicio3DM: TExercicio3DM
       Required = True
       Size = 100
     end
+  end
+  object ArquivoSQLDataSet: TSQLDataSet
+    CommandText = 
+      'select pes. NMPESSOA, cid.nmcidade, cid.UF from PESSOA pes   JOI' +
+      'N CIDADE cid ON pes.cdcidade = cid.cdcidade'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBSQLConnection
+    Left = 184
+    Top = 288
+    object ArquivoSQLDataSetNMPESSOA: TStringField
+      FieldName = 'NMPESSOA'
+      Required = True
+      Size = 100
+    end
+    object ArquivoSQLDataSetNMCIDADE: TStringField
+      FieldName = 'NMCIDADE'
+      Required = True
+      Size = 100
+    end
+    object ArquivoSQLDataSetUF: TStringField
+      FieldName = 'UF'
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object ArquivoDataSetProvider: TDataSetProvider
+    DataSet = ArquivoSQLDataSet
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 296
+    Top = 288
+  end
+  object ArquivoClientDataSet: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'ArquivoDataSetProvider'
+    Left = 416
+    Top = 288
   end
 end
