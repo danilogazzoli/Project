@@ -60,6 +60,7 @@ type
     ArquivoSQLDataSetNMCIDADE: TStringField;
     ArquivoSQLDataSetUF: TStringField;
     procedure PessoaClientDataSetNewRecord(DataSet: TDataSet);
+    procedure DBSQLConnectionBeforeConnect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,11 +74,28 @@ var
 
 implementation
 
+uses Forms;
+
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
 
 { TExercicio3DM }
+
+procedure TExercicio3DM.DBSQLConnectionBeforeConnect(Sender: TObject);
+var
+  _iniParams: TStringList;
+  _i: integer;
+begin
+  _iniParams := TStringList.Create;
+  try
+    _iniParams.LoadFromFile(ExtractFilePath(Application.ExeName) + 'Parametros.ini');
+    for _i := 0 to _iniParams.Count - 1 do
+      DBSQLConnection.Params.Values[_iniParams.Names[_i]] := _iniParams.ValueFromIndex[_i];
+  finally
+    _iniParams.Free;
+  end;
+end;
 
 function TExercicio3DM.geNextIdPessoa: integer;
 var

@@ -45,7 +45,7 @@ object Exercicio3DM: TExercicio3DM
       'RoleName=RoleName'
       'ServerCharSet='
       'Trim Char=False')
-    Connected = True
+    BeforeConnect = DBSQLConnectionBeforeConnect
     Left = 88
     Top = 56
   end
